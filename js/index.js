@@ -1,20 +1,18 @@
 let myLibrary = [];
 
-function Book() {
-  // the constructor...
+function Book(title, author, pages, read) {
+  this.title = title;
+  this.author = author;
+  this.pages = pages;
+  this.read = read;
 }
 
-function addBookToLibrary(title, author, pages) {
-  let tempObj = {}
-  tempObj.title = title;
-  tempObj.author = author;
-  tempObj.pages = pages;
-  tempObj.read = 0;
-  myLibrary.push(tempObj);
+function addBookToLibrary(title, author, pages, read) {
+  myLibrary.push( new Book(title, author, pages, read));
 }
 
-addBookToLibrary("Book 1", "Denis", 800);
-addBookToLibrary("Book 2", "Josue", 500);
+addBookToLibrary("Book 1", "Denis", 800, 0);
+addBookToLibrary("Book 2", "Josue", 500, 0);
 
 function render(){
     let container = document.querySelector(".items-container");
@@ -29,9 +27,10 @@ function render(){
                 <p>${obj.title}</p>
                 <p>${obj.author}</p>
                 <p>${obj.pages}</p>
-                <p>${obj.read}</p>
-                <p><input type="button" onclick="deleteBook(${i})"</p>
-                
+                <p><button onclick="updateReadStatus(${i})">
+                ${obj.read == 0 ? 'Not read' : 'Read' }
+                </button></p>
+                <p><button onclick="deleteBook(${i})">Delete</button></p>
             </div>
         `
     }
@@ -45,22 +44,25 @@ buttonNewBook.addEventListener("click", () => {
 })
 
 function addFormValues(){
-    let form = document.getElementById("form")
-    function handleForm(event) { event.preventDefault(); } 
-    form.addEventListener('submit', handleForm);
 
+  let form = document.getElementById("form")
+  function handleForm(event) { event.preventDefault(); } 
+  form.addEventListener('submit', handleForm);
+  const btnAddBook = document.getElementById("addBook")
+  btnAddBook.addEventListener("click", () => {
     let title = document.getElementById("title")
     let author = document.getElementById("author")
+    let read = document.getElementById("read").checked ? 1 : 0;
+    console.log(read)
     const pages = document.getElementById("pages")
-    const btnAddBook = document.getElementById("addBook")
-    btnAddBook.addEventListener("click", () => {
-        addBookToLibrary(title.value, author.value, parseInt(pages.value));
-        title.value = ""
-        author.value = ""
-        pages.value = ""
-        render(); 
-        console.log(myLibrary)
-    }) 
+    addBookToLibrary(title.value, author.value, parseInt(pages.value), read);
+    title.value = ""
+    author.value = ""
+    pages.value = ""
+    document.getElementById("read").checked = false
+    render(); 
+    console.log(myLibrary)
+  }) 
 }
 
 function deleteBook(position) {
@@ -68,6 +70,11 @@ function deleteBook(position) {
   render();
 }
 
+function updateReadStatus(position) {
+  myLibrary[position].read == 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
+  render();
+  console.log("here")
+}
 
 render()
 addFormValues()  
