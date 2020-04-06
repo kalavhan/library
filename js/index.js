@@ -17,15 +17,12 @@ addBookToLibrary("Book 1", "Denis", 800);
 addBookToLibrary("Book 2", "Josue", 500);
 
 function render(){
-    let buttonNewBook = document.getElementById("btnNewBook")
-    buttonNewBook.addEventListener("click", () => {
-        let form = document.querySelector("#form");
-        form.style["display"] = "block";  
-          
-    })
-    let container = document.querySelector(".items-container")
-    myLibrary.forEach(obj => {
-        console.log(obj)
+    let container = document.querySelector(".items-container");
+    let count = 0;
+    container.innerHTML = "";
+    for(let i = 0; i < myLibrary.length; i++) {
+        let obj = myLibrary[i];
+        console.log(obj);
         container.innerHTML += 
         `
             <div class="item"> 
@@ -33,12 +30,19 @@ function render(){
                 <p>${obj.author}</p>
                 <p>${obj.pages}</p>
                 <p>${obj.read}</p>
+                <p><input type="button" onclick="deleteBook(${i})"</p>
                 
             </div>
         `
-    });
+    }
     
 }
+
+let buttonNewBook = document.getElementById("btnNewBook")
+buttonNewBook.addEventListener("click", () => {
+    let form = document.querySelector("#form");
+    form.style["display"] = "block";  
+})
 
 function addFormValues(){
     let form = document.getElementById("form")
@@ -54,8 +58,14 @@ function addFormValues(){
         title.value = ""
         author.value = ""
         pages.value = ""
+        render(); 
         console.log(myLibrary)
-    })  
+    }) 
+}
+
+function deleteBook(position) {
+  myLibrary.splice(position, 1);
+  render();
 }
 
 
