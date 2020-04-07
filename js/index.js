@@ -33,8 +33,9 @@ function displayAlert(message, messageType) {
 function render() {
   const container = document.querySelector('.items-container');
   container.innerHTML = '';
-  for (let i = 0; i < myLibrary.length; i+=1) {
-    const obj = myLibrary[i];
+  let counter = 0;
+  myLibrary.forEach(obj => {
+    console.log(obj)
     container.innerHTML
     += `
       <div class='item card'> 
@@ -43,14 +44,15 @@ function render() {
           <p class='author'><span>By: </span>${obj.author}</p>
           
           <div class='action-btns'>
-            <button class='btn read-btn' onclick='updateReadStatus(${i})'>
+            <button class='btn read-btn' onclick='updateReadStatus(${counter})'>
             ${obj.read === 0 ? 'Not read' : 'Read'}
             </button>
-            <button class='btn delete-btn' onclick='deleteBook(${i})'>Delete</button>
+            <button class='btn delete-btn' onclick='deleteBook(${counter})'>Delete</button>
           </div>
       </div>
     `;
-  }
+    counter += 1;
+  });
 }
 const buttonNewBook = document.getElementById('btnNewBook');
 buttonNewBook.addEventListener('click', () => {
