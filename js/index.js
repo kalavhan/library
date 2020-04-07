@@ -19,7 +19,6 @@ function render(){
     container.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++) {
         let obj = myLibrary[i];
-        console.log(obj);
         container.innerHTML += 
         `
             <div class="item card"> 
@@ -55,7 +54,6 @@ function addFormValues(){
     let title = document.getElementById("title")
     let author = document.getElementById("author")
     let read = document.getElementById("read").checked ? 1 : 0;
-    console.log(read)
     const pages = document.getElementById("pages")
 
     if(title.value == null || title.value == "" ){
@@ -70,8 +68,7 @@ function addFormValues(){
       author.value = ""
       pages.value = ""
       document.getElementById("read").checked = false
-      render(); 
-      console.log(myLibrary)
+      render();
     }
   }) 
 }
@@ -84,7 +81,6 @@ function deleteBook(position) {// eslint-disable-line no-unused-vars
 function updateReadStatus(position) {// eslint-disable-line no-unused-vars
   myLibrary[position].read == 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
   render();
-  console.log("here")
 }
 
 render()
