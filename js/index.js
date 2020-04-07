@@ -14,6 +14,23 @@ function addBookToLibrary(title, author, pages, read) {
 addBookToLibrary('Book 1', 'Denis', 800, 0);
 addBookToLibrary('Book 2', 'Josue', 500, 0);
 
+function displayAlert(message, messageType){
+  console.log('Alert is opened')
+  const alert = document.querySelector('.alert');
+  const alertMessage = document.querySelector('#message');
+  const alertType = document.querySelector('#message-type');
+  alert.style.display = 'block';
+  alertMessage.innerHTML = message;
+  alertType.innerHTML = messageType;
+  if (messageType === 'Danger!'){
+    alert.style.backgroundColor = '#f44336';
+  } else if (messageType === 'Success!'){
+    alert.style.backgroundColor = '#00802b';
+  } else {
+    alert.style.backgroundColor = '#ffa31a';
+  }
+}
+
 function render() {
   const container = document.querySelector('.items-container');
   container.innerHTML = '';
@@ -53,11 +70,11 @@ function addFormValues() {
     const read = document.getElementById('read').checked ? 1 : 0;
     const pages = document.getElementById('pages');
     if (title.value === null || title.value === '' ) {
-      displayAlert("Title must not be empty.", "Danger!");
+      displayAlert('Title must not be empty.', 'Danger!');
     } else if (author.value === null || author.value === '') {
-      displayAlert("Author must not be empty.", "Danger!");
+      displayAlert('Author must not be empty.', 'Danger!');
     } else if (pages.value === null || pages.value === '') {
-      displayAlert("Book pages must not be empty.", "Danger!");
+      displayAlert('Book pages must not be empty.', 'Danger!');
     } else {
       addBookToLibrary(title.value, author.value, parseInt(pages.value, 10), read);
       title.value = '';
@@ -65,7 +82,7 @@ function addFormValues() {
       pages.value = '';
       document.getElementById('read').checked = false;
       render();
-      displayAlert("Book added succesfuly.", "Success!");
+      displayAlert('Book added succesfuly.', 'Success!');
     }
   });
 }
@@ -73,29 +90,12 @@ function addFormValues() {
 function deleteBook(position) { // eslint-disable-line no-unused-vars
   myLibrary.splice(position, 1);
   render();
-  displayAlert("Book deleted succesfuly.", "Danger!");
+  displayAlert('Book deleted succesfuly.', 'Danger!');
 }
 
 function updateReadStatus(position) { // eslint-disable-line no-unused-vars
   myLibrary[position].read === 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
   render();
-}
-
-function displayAlert(message, message_type){
-  console.log("Alert is opened")
-  const alert = document.querySelector('.alert');
-  const alert_message = document.querySelector('#message');
-  const alert_type = document.querySelector('#message-type');
-  alert.style.display = 'block';
-  alert_message.innerHTML = message;
-  alert_type.innerHTML = message_type;
-  if (message_type === 'Danger!'){
-    alert.style.backgroundColor = '#f44336';
-  } else if (message_type === 'Success!'){
-    alert.style.backgroundColor = '#00802b';
-  } else {
-    alert.style.backgroundColor = '#ffa31a';
-  }
 }
 
 render();
