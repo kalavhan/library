@@ -22,9 +22,9 @@ function displayAlert(message, messageType) {
   alertMessage.innerHTML = message;
   alertType.innerHTML = messageType;
   if (messageType === 'Danger!') {
-    alert.style.backgroundColor = '#f44336';
+    alert.style.backgroundColor = '#ff5c33';
   } else if (messageType === 'Success!') {
-    alert.style.backgroundColor = '#00802b';
+    alert.style.backgroundColor = '#00cc66';
   } else {
     alert.style.backgroundColor = '#ffa31a';
   }
@@ -33,7 +33,7 @@ function displayAlert(message, messageType) {
 function render() {
   const container = document.querySelector('.items-container');
   container.innerHTML = '';
-  for (let i = 0; i < myLibrary.length; i++) {
+  for (let i = 0; i < myLibrary.length; i+=1) {
     const obj = myLibrary[i];
     container.innerHTML
     += `
@@ -93,7 +93,11 @@ function deleteBook(position) { // eslint-disable-line no-unused-vars
 }
 
 function updateReadStatus(position) { // eslint-disable-line no-unused-vars
-  myLibrary[position].read === 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
+  if (myLibrary[position].read === 0) {
+    myLibrary[position].read = 1;
+  } else {
+    myLibrary[position].read = 0;
+  }
   render();
 }
 
