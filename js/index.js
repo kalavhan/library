@@ -17,9 +17,9 @@ addBookToLibrary('Book 2', 'Josue', 500, 0);
 function render() {
   const container = document.querySelector('.items-container');
   container.innerHTML = '';
-  for (let i = 0; i < myLibrary.length; i += 1) {
-    let obj = myLibrary[i];
-    container.innerHTML 
+  for (let i = 0; i < myLibrary.length; i = i + 1) {
+    const obj = myLibrary[i];
+    container.innerHTML
     +=`
       <div class='item card'> 
           <p class='title'><span>Title: </span>${obj.title}</p>
@@ -52,15 +52,14 @@ function addFormValues() {
     const author = document.getElementById('author');
     const read = document.getElementById('read').checked ? 1 : 0;
     const pages = document.getElementById('pages');
-
-    if (title.value === null || title.value === '' ){
+    if (title.value === null || title.value === '' ) {
       window.alert('Title must not be empty!');
     } else if (author.value === null || author.value === '') {
       window.alert('Author must not be empty!');
     } else if (pages.value === null || pages.value === '') {
       window.alert('Pages must not be empty!');
     } else {
-      addBookToLibrary(title.value, author.value, parseInt(pages.value), read);
+      addBookToLibrary(title.value, author.value, parseInt(pages.value, 10), read);
       title.value = '';
       author.value = '';
       pages.value = '';
@@ -68,16 +67,16 @@ function addFormValues() {
       render();
       window.alert('Book added!');
     }
-  }) 
+  });
 }
 
-function deleteBook(position) {// eslint-disable-line no-unused-vars
+function deleteBook(position) { // eslint-disable-line no-unused-vars
   myLibrary.splice(position, 1);
   render();
 }
 
-function updateReadStatus(position) {// eslint-disable-line no-unused-vars
-  myLibrary[position].read == 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
+function updateReadStatus(position) { // eslint-disable-line no-unused-vars
+  myLibrary[position].read === 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
   render();
 }
 
