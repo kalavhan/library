@@ -35,7 +35,6 @@ function render() {
   container.innerHTML = '';
   let counter = 0;
   myLibrary.forEach(obj => {
-    console.log(obj)
     container.innerHTML
     += `
       <div class='item card'> 
