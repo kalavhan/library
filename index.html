@@ -3,31 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="style/css" href="css/index.css"/>
-  <style>
-    .item {
-    display: flex;
-  }
-
-  .item > p {
-    margin-right: 1rem;
-  }
-
-  form{
-    display: none;
-  }
-  </style>
+ <link rel="stylesheet" href="css/index.css">
   <title>Library</title>
 </head>
 <body>
   <div class="form-container">
-    <button id="btnNewBook">New Book</button>
+    <button class="btn" id="btnNewBook">New Book</button>
     <form id="form">      
       <input type="text" id="title"  placeholder="Title"><br>
       <input type="text" id="author"  placeholder="Author"><br>
       <input type="number" id="pages"  placeholder="Pages"><br>
       <input type="checkbox" id="read" >Read<br>
-      <input type="submit" id="addBook" value="Add Book">
+      <input class="btn" type="submit" id="addBook" value="Add Book">
     </form>
   </div>
   <div class="items-container">

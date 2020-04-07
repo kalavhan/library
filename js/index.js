@@ -16,21 +16,23 @@ addBookToLibrary("Book 2", "Josue", 500, 0);
 
 function render(){
     let container = document.querySelector(".items-container");
-    let count = 0;
     container.innerHTML = "";
     for(let i = 0; i < myLibrary.length; i++) {
         let obj = myLibrary[i];
         console.log(obj);
         container.innerHTML += 
         `
-            <div class="item"> 
-                <p>${obj.title}</p>
-                <p>${obj.author}</p>
-                <p>${obj.pages}</p>
-                <p><button onclick="updateReadStatus(${i})">
-                ${obj.read == 0 ? 'Not read' : 'Read' }
-                </button></p>
-                <p><button onclick="deleteBook(${i})">Delete</button></p>
+            <div class="item card"> 
+                <p class="title"><span>Title: </span>${obj.title}</p>
+                <p class="pages">${obj.pages}<span> Pages</span></p>
+                <p class="author"><span>By: </span>${obj.author}</p>
+                
+                <div class="action-btns">
+                  <button class="btn read-btn" onclick="updateReadStatus(${i})">
+                  ${obj.read == 0 ? 'Not read' : 'Read' }
+                  </button>
+                  <button class="btn delete-btn" onclick="deleteBook(${i})">Delete</button>
+                </div>
             </div>
         `
     }
@@ -55,22 +57,31 @@ function addFormValues(){
     let read = document.getElementById("read").checked ? 1 : 0;
     console.log(read)
     const pages = document.getElementById("pages")
-    addBookToLibrary(title.value, author.value, parseInt(pages.value), read);
-    title.value = ""
-    author.value = ""
-    pages.value = ""
-    document.getElementById("read").checked = false
-    render(); 
-    console.log(myLibrary)
+
+    if(title.value == null || title.value == "" ){
+      window.alert("Title must not be empty!")
+    } else if(author.value == null || author.value == "") {
+      window.alert("Author must not be empty!")
+    }else if(pages.value == null || pages.value == "") {
+      window.alert("Pages must not be empty!")
+    } else{
+      addBookToLibrary(title.value, author.value, parseInt(pages.value), read);
+      title.value = ""
+      author.value = ""
+      pages.value = ""
+      document.getElementById("read").checked = false
+      render(); 
+      console.log(myLibrary)
+    }
   }) 
 }
 
-function deleteBook(position) {
+function deleteBook(position) {// eslint-disable-line no-unused-vars
   myLibrary.splice(position, 1);
   render();
 }
 
-function updateReadStatus(position) {
+function updateReadStatus(position) {// eslint-disable-line no-unused-vars
   myLibrary[position].read == 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
   render();
   console.log("here")
