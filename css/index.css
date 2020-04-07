@@ -1,8 +1,40 @@
-
 body{
+  background-color: #F5F5F5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #444;
+}
+.alert {
+  padding: 16px;
+  color: white;
+  border-radius: 4px;
+  margin: 0 1rem;
+  text-align: center;
+  display: none;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.container{
     display: flex;
     align-content: center;
-    background-color: #F5F5F5;
 }
 
 .form-container{
@@ -12,9 +44,12 @@ body{
 
 .items-container{
     width: 70%;
-    margin-top: 50px;
+    margin-top: 10px;
+    padding-top: 30px;
     margin-right: 1rem;
     display: grid;
+    height: 90vh;
+    overflow-y: scroll;
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 1rem;
     row-gap: 1rem;

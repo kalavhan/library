@@ -3,22 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat&display=swap" rel="stylesheet">
  <link rel="stylesheet" href="css/index.css">
   <title>Library</title>
 </head>
 <body>
-  <div class="form-container">
-    <button class="btn" id="btnNewBook">New Book</button>
-    <form id="form">      
-      <input type="text" id="title"  placeholder="Title"><br>
-      <input type="text" id="author"  placeholder="Author"><br>
-      <input type="number" id="pages"  placeholder="Pages"><br>
-      <input type="checkbox" id="read" >Read<br>
-      <input class="btn" type="submit" id="addBook" value="Add Book">
-    </form>
+
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span> 
+    <strong id="message-type">Danger!</strong> <span id="message">Indicates a dangerous or potentially negative action.</span>
   </div>
-  <div class="items-container">
-  </div>
+
+  <div class="container">
+    <div class="form-container">
+      <h1 class="logo">Library</h1>
+      <button class="btn" id="btnNewBook">New Book</button>
+      <form id="form">      
+        <input type="text" id="title"  placeholder="Title"><br>
+        <input type="text" id="author"  placeholder="Author"><br>
+        <input type="number" id="pages"  placeholder="Pages"><br>
+        <input type="checkbox" id="read" >Read<br>
+        <input class="btn" type="submit" id="addBook" value="Add Book">
+      </form>
+    </div>
+    <div class="items-container">
+    </div>
+</div>
   <script src="js/index.js"></script>
 </body>
 </html>

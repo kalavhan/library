@@ -53,11 +53,11 @@ function addFormValues() {
     const read = document.getElementById('read').checked ? 1 : 0;
     const pages = document.getElementById('pages');
     if (title.value === null || title.value === '' ) {
-      window.alert('Title must not be empty!');
+      displayAlert("Title must not be empty.", "Danger!");
     } else if (author.value === null || author.value === '') {
-      window.alert('Author must not be empty!');
+      displayAlert("Author must not be empty.", "Danger!");
     } else if (pages.value === null || pages.value === '') {
-      window.alert('Pages must not be empty!');
+      displayAlert("Book pages must not be empty.", "Danger!");
     } else {
       addBookToLibrary(title.value, author.value, parseInt(pages.value, 10), read);
       title.value = '';
@@ -65,7 +65,7 @@ function addFormValues() {
       pages.value = '';
       document.getElementById('read').checked = false;
       render();
-      window.alert('Book added!');
+      displayAlert("Book added succesfuly.", "Success!");
     }
   });
 }
@@ -73,11 +73,29 @@ function addFormValues() {
 function deleteBook(position) { // eslint-disable-line no-unused-vars
   myLibrary.splice(position, 1);
   render();
+  displayAlert("Book deleted succesfuly.", "Danger!");
 }
 
 function updateReadStatus(position) { // eslint-disable-line no-unused-vars
   myLibrary[position].read === 0 ? myLibrary[position].read = 1 : myLibrary[position].read = 0;
   render();
+}
+
+function displayAlert(message, message_type){
+  console.log("Alert is opened")
+  const alert = document.querySelector('.alert');
+  const alert_message = document.querySelector('#message');
+  const alert_type = document.querySelector('#message-type');
+  alert.style.display = 'block';
+  alert_message.innerHTML = message;
+  alert_type.innerHTML = message_type;
+  if (message_type === 'Danger!'){
+    alert.style.backgroundColor = '#f44336';
+  } else if (message_type === 'Success!'){
+    alert.style.backgroundColor = '#00802b';
+  } else {
+    alert.style.backgroundColor = '#ffa31a';
+  }
 }
 
 render();
