@@ -1,0 +1,139 @@
+body{
+  background-color: #F5F5F5;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.logo{
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #444;
+}
+.alert {
+  padding: 16px;
+  color: white;
+  border-radius: 4px;
+  margin: 0 1rem;
+  text-align: center;
+  display: none;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.container{
+    display: flex;
+    align-content: center;
+}
+
+.form-container{
+    width: 30%;
+    margin: 50px 50px 0 50px;
+}
+
+.items-container{
+    width: 70%;
+    margin-top: 10px;
+    padding-top: 30px;
+    margin-right: 1rem;
+    display: grid;
+    height: 90vh;
+    overflow-y: scroll;
+    grid-template-columns: 1fr 1fr 1fr;
+    column-gap: 1rem;
+    row-gap: 1rem;
+}
+
+.item {
+    text-align: center;
+  }
+.item .title{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.item .pages{
+    font-size: 16px;
+}
+
+.item .author{
+    color: #555;
+    font-weight: 500;
+    font-style: italic;
+}
+  .action-btns{
+      border-top: 1px solid rgb(206, 206, 206);
+      padding-top: 8px;
+  }
+
+  .read-btn{
+      background-color: #45a049;
+  }
+
+  .delete-btn{
+      background-color: #ff5c33;
+  }
+
+  .item > p {
+    margin-right: 1rem;
+  }
+
+  form{
+    display: none;
+  }
+
+  input[type=text], select, input[type=number] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  input[type=submit], #btnNewBook {
+    width: 40%;
+    background-color: #4CAF50;
+    
+  }
+  
+  .btn{
+    color: white;
+    padding: 12px 20px;
+    margin: 8px 0;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  #btnNewBook{
+      background-color: #0066cc;
+  }
+  
+  input[type=submit]:hover {
+    background-color: #45a049;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(126, 126, 126, 0.2);
+    transition: 0.3s;
+    background-color: white;
+    height: 220px;
+  }
+  
+  .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  }
